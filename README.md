@@ -15,14 +15,14 @@ The rest is up to you!
 
 # START PROJECT
 
-- Create folder and js file
-- npm init
-- npm i express
-- express generator npx
-- install postrgres
-- create database
-- index - pool file
-- .env file and gitignore
+- ✔️Create folder and js file
+- ✔️npm init
+- ✔️npm i express
+- ✔️express generator npx
+- ✔️install postrgres
+- ✔️create database
+- ✔️index - pool file
+- ✔️.env file and gitignore
 - make scripts to create table, dropTable, viewTable, populateTable
 - run createTable and populate table
 - set up paths in app.js
