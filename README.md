@@ -23,10 +23,10 @@ The rest is up to you!
 - ✔️create database
 - ✔️index - pool file
 - ✔️.env file and gitignore
-- make scripts to create table, dropTable, viewTable, populateTable
-- run createTable and populate table
-- set up paths in app.js
-- set up routes - get and post request
+- ✔️make scripts to create table, dropTable, viewTable, populateTable
+- ✔️run createTable and populate table
+- ✔️set up paths in app.js
+- ✔️set up routes - get and post request
 - create models folder and write functions in a file called scoreBoard
 - test routes / database using postman
 
@@ -37,7 +37,7 @@ The rest is up to you!
 
 # DATABASE TABLE
 
-Table columns will be id, date, game, team1score, team2score, team3score, team4score
+✔️Table columns will be id, date, game, team1score, team2score, team3score, team4score
 
 # HTML/CSS page
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SoC Scoreboard!</title>
+    <link href="../public/stylesheets/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>SoC Scoreboard</h1>
+    </header>
+    <section>
+        <form>
+            <label>Date: <input type="date"></input></label>
+            <label>Game: <input type="text"></input></label>
+            <label>Team 1 Score: <input type="number"></input></label>
+            <label>Team 2 Score: <input type="number"></input></label>
+            <label>Team 3 Score: <input type="number"></input></label>
+            <label>Team 4 Score: <input type="number"></input></label>
+            <button type="submit">Add score!</button>
+          </form>
+          <button>Get the latest scores!</button>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Game</th>
+                <th>Team 1</th>
+                <th>Team 2</th>
+                <th>Team 3</th>
+                <th>Team 4</th>
+            </tr>
+            <tr>
+                <td>2020-10-02</td>
+                <td>Mind</td>
+                <td>4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </section>
+    <script src="../public/javascripts/main.js"></script>
+  </body>
+</html>
