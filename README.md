@@ -45,3 +45,7 @@ The rest is up to you!
 - Create a table with columns of Date, Game, Team 1, Team 2, Team 3, Team 4
 - At the bottom of the table there will be the running total of each teams score
 - Have an input section at the top of the page where you can add new data to the table
+- Save payload.rows to a variable called data.
+- Use an array method on data to get the information out (forEach)
+- Create td element
+- forEach item property assign it to the innerText of a td element. 
