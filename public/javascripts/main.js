@@ -9,16 +9,21 @@ getScoresButton.addEventListener("click", getAllScores);
 async function getAllScores() {
   const response = await fetch("http://localhost:3000/scoreboard");
   const { payload } = await response.json();
-  const data = payload.rows;
+  const data = payload.rows;// Saved the data we want from the object into a variable called data
   console.log(data);
-  data.forEach(renderScores);
+  data.forEach(renderScores);// Used forEach on data and handing it renderScores
 
+//For each object in data renderScores is creating a table row. 
   function renderScores(eachRow) {
+// tr is a result of calling the function displayAllScores on each object
     const tr = displayAllScores(eachRow);
+// Attaching the completed table row(tr) to the table
     table.appendChild(tr);
   }
 }
 
+//Function generates table data on the front end for users. 
+//Handed in to the function the destructured data object.
 function displayAllScores({
   date,
   game,
@@ -26,7 +31,10 @@ function displayAllScores({
   team2_score,
   team3_score,
   team4_score,
-}) {
+}) 
+//Creating a new table row and saving as tr.
+// Creating td elements and assigning it to the data.
+{
   const tr = document.createElement("tr");
   const dateItem = document.createElement("td");
   dateItem.innerText = date;
