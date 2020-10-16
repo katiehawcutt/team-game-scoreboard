@@ -1,10 +1,9 @@
-h1{
+h1 {
   color: yellow;
-  font-size: 50px;
+  font-size: 70px;
   text-shadow: purple 2px 2px;
+  font-family: "Bungee Inline";
 }
-
-
 
 body {
   background-image: url("../images/avengers.jpeg");
@@ -35,20 +34,24 @@ form {
   justify-content: center;
   align-items: baseline;
   border-radius: 10px;
+  font-family: "Carrois Gothic SC";
+  font-size: 20px;
+  font-weight: bold;
 }
 
 input {
-
- margin: 10px;
+  margin: 10px;
 }
 
 button {
-  font-size: 15px;
+  font-size: 18px;
   padding: 10px;
   margin: 20px;
+  border-radius: 10px;
+  border: black solid 2px;
+  font-family: "Carrois Gothic SC";
+  font-weight: bold;
 }
-
-
 
 table,
 th,
@@ -61,9 +64,25 @@ th,
 td {
   padding: 20px;
   text-align: center;
+  font-size: 18px;
+  font-family: "Carrois Gothic SC";
 }
- table{
+table {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 10px;
   border-radius: 10px;
- }
+}
+
+label {
+  font-family: "Carrois Gothic SC";
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: yellow;
+}
+
+#deleteAll:hover {
+  transform: scale(1.1);
+  background-color: red;
+}

@@ -44,25 +44,25 @@ async function getAllScores() {
     table.appendChild(tr); // Attaching the completed table row(tr) to the table
   }
 }
-function renderHeadings(){
+function renderHeadings() {
   const tableHeadings = createTableHeadings();
-  table.appendChild(tableHeadings); 
+  table.appendChild(tableHeadings);
 }
 //
 function createTableHeadings() {
   const tr = document.createElement("tr");
   const dateHeading = document.createElement("th");
-    dateHeading.innerText = "Date";
+  dateHeading.innerText = "DATE";
   const gameHeading = document.createElement("th");
-    gameHeading.innerText = "Game";
+  gameHeading.innerText = "GAME";
   const team1Heading = document.createElement("th");
-    team1Heading.innerText = "Team 1";
+  team1Heading.innerText = "TEAM 1";
   const team2Heading = document.createElement("th");
-    team2Heading.innerText = "Team 2";
+  team2Heading.innerText = "TEAM 2";
   const team3Heading = document.createElement("th");
-    team3Heading.innerText = "Team 3";
+  team3Heading.innerText = "TEAM 3";
   const team4Heading = document.createElement("th");
-    team4Heading.innerText = "Team 4";
+  team4Heading.innerText = "TEAM 4";
   tr.appendChild(dateHeading);
   tr.appendChild(gameHeading);
   tr.appendChild(team1Heading);
@@ -70,7 +70,7 @@ function createTableHeadings() {
   tr.appendChild(team3Heading);
   tr.appendChild(team4Heading);
   return tr;
-};
+}
 
 //Handed in to the function the destructured object
 function displayAllScores({
@@ -152,7 +152,8 @@ function displayRunningTotal() {
 
 //POST REQUEST
 
-async function addNewScore() {
+async function addNewScore(e) {
+  e.preventDefault();
   const response = await fetch("/scoreboard", {
     method: "POST",
     headers: { "content-type": "application/json" },
@@ -160,6 +161,8 @@ async function addNewScore() {
   });
   const data = await response.json();
   console.log(data);
+  getAllScores();
+  clearInputFields();
 }
 
 function gatherInputData() {
@@ -170,6 +173,15 @@ function gatherInputData() {
   const team3_score = team3input.value;
   const team4_score = team4input.value;
   return { date, game, team1_score, team2_score, team3_score, team4_score };
+}
+
+function clearInputFields() {
+  dateInput.value = "";
+  gameInput.value = "";
+  team1input.value = "";
+  team2input.value = "";
+  team3input.value = "";
+  team4input.value = "";
 }
 
 //DELETE REQUEST
