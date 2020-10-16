@@ -16,7 +16,7 @@ let team2runningTotal = 0;
 let team3runningTotal = 0;
 let team4runningTotal = 0;
 
-//Adding a event listener to when th ebutton is clicked.
+//Adding a event listener when the button is clicked.
 getScoresButton.addEventListener("click", getAllScores);
 addScoreButton.addEventListener("click", addNewScore);
 deleteAllButton.addEventListener("click", deleteAll);
@@ -33,6 +33,7 @@ async function getAllScores() {
   team3runningTotal = 0;
   team4runningTotal = 0;
   const data = payload.rows; // Saved the data we want from the object into a variable called data
+  renderHeadings();
   console.log(data);
   data.forEach(renderScores);
   renderTotals(); // Used forEach on data and handing it renderScores as a callback function
@@ -43,14 +44,33 @@ async function getAllScores() {
     table.appendChild(tr); // Attaching the completed table row(tr) to the table
   }
 }
-
+function renderHeadings(){
+  const tableHeadings = createTableHeadings();
+  table.appendChild(tableHeadings); 
+}
 //
-
-// function createTableHeadings() {
-//   const dateHeading = document.createElement("th");
-//   dateHeading.innerText = "Date";
-//   table.appendChild(dateHeading);
-// }
+function createTableHeadings() {
+  const tr = document.createElement("tr");
+  const dateHeading = document.createElement("th");
+    dateHeading.innerText = "Date";
+  const gameHeading = document.createElement("th");
+    gameHeading.innerText = "Game";
+  const team1Heading = document.createElement("th");
+    team1Heading.innerText = "Team 1";
+  const team2Heading = document.createElement("th");
+    team2Heading.innerText = "Team 2";
+  const team3Heading = document.createElement("th");
+    team3Heading.innerText = "Team 3";
+  const team4Heading = document.createElement("th");
+    team4Heading.innerText = "Team 4";
+  tr.appendChild(dateHeading);
+  tr.appendChild(gameHeading);
+  tr.appendChild(team1Heading);
+  tr.appendChild(team2Heading);
+  tr.appendChild(team3Heading);
+  tr.appendChild(team4Heading);
+  return tr;
+};
 
 //Handed in to the function the destructured object
 function displayAllScores({
@@ -165,4 +185,5 @@ async function deleteAll() {
   team2runningTotal = 0;
   team3runningTotal = 0;
   team4runningTotal = 0;
+  getAllScores();
 }
