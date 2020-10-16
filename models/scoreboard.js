@@ -32,7 +32,18 @@ async function addNewScore(
   return result;
 }
 
+const deleteAllStatement = `
+DELETE FROM scoreboard
+RETURNING *;
+`;
+
+async function deleteAllData() {
+  const result = await query(deleteAllStatement);
+  console.log(result);
+}
+
 module.exports = {
   displayScores,
   addNewScore,
+  deleteAllData,
 };

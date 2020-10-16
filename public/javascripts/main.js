@@ -1,7 +1,9 @@
 //Using the DOM to access the elements and storing them in variables.
 const getScoresButton = document.querySelector("#getScoresButton");
 const addScoreButton = document.querySelector("#addScoreButton");
+const deleteAllButton = document.querySelector("#deleteAll");
 const table = document.querySelector("#table");
+const allTableData = document.querySelectorAll("td");
 const dateInput = document.querySelector("#date");
 const gameInput = document.querySelector("#gameName");
 const team1input = document.querySelector("#team1Score");
@@ -16,23 +18,39 @@ let team4runningTotal = 0;
 
 //Adding a event listener to when th ebutton is clicked.
 getScoresButton.addEventListener("click", getAllScores);
+addScoreButton.addEventListener("click", addNewScore);
+deleteAllButton.addEventListener("click", deleteAll);
+
+//GET REQUEST
 
 //Creates a function to get all scores from the database.
 async function getAllScores() {
   const response = await fetch("/scoreboard");
   const { payload } = await response.json();
+  table.innerHTML = "";
+  team1runningTotal = 0;
+  team2runningTotal = 0;
+  team3runningTotal = 0;
+  team4runningTotal = 0;
   const data = payload.rows; // Saved the data we want from the object into a variable called data
   console.log(data);
   data.forEach(renderScores);
   renderTotals(); // Used forEach on data and handing it renderScores as a callback function
 
-
-
   function renderScores(item) {
+    // const tableHeadings = createTableHeadings();
     const tr = displayAllScores(item); //for each item handed to renderScores a new table row is created. The value of tr is the result of calling displayAllScores.
     table.appendChild(tr); // Attaching the completed table row(tr) to the table
   }
 }
+
+//
+
+// function createTableHeadings() {
+//   const dateHeading = document.createElement("th");
+//   dateHeading.innerText = "Date";
+//   table.appendChild(dateHeading);
+// }
 
 //Handed in to the function the destructured object
 function displayAllScores({
@@ -108,28 +126,43 @@ function displayRunningTotal() {
 // create a async function which sends a fetch request and that will be to /scoreboard.
 //send extra data within the fetch request to tell it we want to post the data
 //send the input values in the req.body
-//await the response.json 
+//await the response.json
 //create another function which gets the data from the input fields and stores them in variables so we can send in fetch request.
 //add event listener to the add scores button.
 
-async function addNewScore(){
-  const response = await fetch("/scoreboard",{
+//POST REQUEST
+
+async function addNewScore() {
+  const response = await fetch("/scoreboard", {
     method: "POST",
-    headers: {"content-type":"application/json"},
-    body: JSON.stringify(gatherInputData())
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(gatherInputData()),
   });
   const data = await response.json();
-console.log(data);
+  console.log(data);
 }
 
-function gatherInputData(){
-  const date = dateInput.value
-  const game = gameInput.value
-  const team1_score = team1input.value
-  const team2_score = team2input.value
-  const team3_score = team3input.value
-  const team4_score = team4input.value
-  return {date, game, team1_score, team2_score, team3_score, team4_score};
+function gatherInputData() {
+  const date = dateInput.value;
+  const game = gameInput.value;
+  const team1_score = team1input.value;
+  const team2_score = team2input.value;
+  const team3_score = team3input.value;
+  const team4_score = team4input.value;
+  return { date, game, team1_score, team2_score, team3_score, team4_score };
 }
 
-addScoreButton.addEventListener("click", addNewScore);
+//DELETE REQUEST
+
+async function deleteAll() {
+  console.log("I've been pressed!");
+  const response = await fetch("/scoreboard", {
+    method: "DELETE",
+  });
+  const data = await response.json();
+  console.log(data);
+  team1runningTotal = 0;
+  team2runningTotal = 0;
+  team3runningTotal = 0;
+  team4runningTotal = 0;
+}

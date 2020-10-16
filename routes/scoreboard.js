@@ -1,7 +1,11 @@
 var express = require("express");
 var router = express.Router();
 
-const { displayScores, addNewScore } = require("../models/scoreboard");
+const {
+  displayScores,
+  addNewScore,
+  deleteAllData,
+} = require("../models/scoreboard");
 
 router.get("/", async function (req, res) {
   const result = await displayScores();
@@ -27,6 +31,11 @@ router.post("/", async function (req, res) {
     team4_score
   );
   res.json({ sucess: true, payload: result });
+});
+
+router.delete("/", async function (req, res) {
+  const result = await deleteAllData();
+  res.json({ sucess: true, payload: `Everything deleted!` });
 });
 
 module.exports = router;
