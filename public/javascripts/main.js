@@ -1,29 +1,38 @@
-//Using the DOM to access the button and storing in a variable.
+//Using the DOM to access the elements and storing them in variables.
 const getScoresButton = document.querySelector("#getScoresButton");
+const addScoreButton = document.querySelector("#addScoresButton");
 const table = document.querySelector("#table");
+const dateInput = document.querySelector("#date");
+const gameInput = document.querySelector("#gameName");
+const team1input = document.querySelector("#team1Score");
+const team2input = document.querySelector("#team2Score");
+const team3input = document.querySelector("#team3Score");
+const team4input = document.querySelector("#team4Score");
+
+let team1runningTotal = 0;
+let team2runningTotal = 0;
+let team3runningTotal = 0;
+let team4runningTotal = 0;
 
 //Adding a event listener to when th ebutton is clicked.
 getScoresButton.addEventListener("click", getAllScores);
 
 //Creates a function to get all scores from the database.
 async function getAllScores() {
-  const response = await fetch("http://localhost:3000/scoreboard");
+  const response = await fetch("/scoreboard");
   const { payload } = await response.json();
-  const data = payload.rows;// Saved the data we want from the object into a variable called data
+  const data = payload.rows; // Saved the data we want from the object into a variable called data
   console.log(data);
-  data.forEach(renderScores);// Used forEach on data and handing it renderScores
+  data.forEach(renderScores);
+  renderTotals(); // Used forEach on data and handing it renderScores as a callback function
 
-//For each object in data renderScores is creating a table row. 
-  function renderScores(eachRow) {
-// tr is a result of calling the function displayAllScores on each object
-    const tr = displayAllScores(eachRow);
-// Attaching the completed table row(tr) to the table
-    table.appendChild(tr);
+  function renderScores(item) {
+    const tr = displayAllScores(item); //for each item handed to renderScores a new table row is created. The value of tr is the result of calling displayAllScores.
+    table.appendChild(tr); // Attaching the completed table row(tr) to the table
   }
 }
 
-//Function generates table data on the front end for users. 
-//Handed in to the function the destructured data object.
+//Handed in to the function the destructured object
 function displayAllScores({
   date,
   game,
@@ -31,13 +40,16 @@ function displayAllScores({
   team2_score,
   team3_score,
   team4_score,
-}) 
-//Creating a new table row and saving as tr.
-// Creating td elements and assigning it to the data.
-{
-  const tr = document.createElement("tr");
+}) {
+  console.log(typeof team1_score);
+  team1runningTotal += parseInt(team1_score);
+  team2runningTotal += parseInt(team2_score);
+  team3runningTotal += parseInt(team3_score);
+  team4runningTotal += parseInt(team4_score);
+  const tr = document.createElement("tr"); //Creating a new table row and saving as tr.
   const dateItem = document.createElement("td");
-  dateItem.innerText = date;
+  const formattedDate = formatDate(date);
+  dateItem.innerText = formattedDate;
   const gameItem = document.createElement("td");
   gameItem.innerText = game;
   const team1Score = document.createElement("td");
@@ -54,5 +66,38 @@ function displayAllScores({
   tr.appendChild(team2Score);
   tr.appendChild(team3Score);
   tr.appendChild(team4Score);
+  return tr;
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toDateString();
+}
+
+function renderTotals() {
+  const runningTotalRow = displayRunningTotal();
+  table.appendChild(runningTotalRow);
+}
+
+function displayRunningTotal() {
+  const tr = document.createElement("tr");
+  const firstColumn = document.createElement("td");
+  firstColumn.innerText = "";
+  const secondColumn = document.createElement("td");
+  secondColumn.innerText = "TOTAL POINTS:";
+  const team1total = document.createElement("td");
+  team1total.innerText = team1runningTotal;
+  const team2total = document.createElement("td");
+  team2total.innerText = team2runningTotal;
+  const team3total = document.createElement("td");
+  team3total.innerText = team3runningTotal;
+  const team4total = document.createElement("td");
+  team4total.innerText = team4runningTotal;
+  tr.appendChild(firstColumn);
+  tr.appendChild(secondColumn);
+  tr.appendChild(team1total);
+  tr.appendChild(team2total);
+  tr.appendChild(team3total);
+  tr.appendChild(team4total);
   return tr;
 }

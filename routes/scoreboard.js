@@ -6,7 +6,6 @@ const { displayScores, addNewScore } = require("../models/scoreboard");
 router.get("/", async function (req, res) {
   const result = await displayScores();
   console.log(result);
-  res.setHeader("Content-Type", "text/html")
   res.json({ sucess: true, payload: result });
 });
 
