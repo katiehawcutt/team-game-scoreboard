@@ -6,7 +6,7 @@
 
 ###### October 2020
 
-_Our Week 4 hackathon challenge was to build our first full stack app using Express and a Postgres database. It was a chance to embed everything we'd learnt so far on the bootcamp and great practice of breaking down problems into solvable chunks. I'm so happy that I was able to make my first full-stack app with no help after just 4 weeks on the bootcamp - it feels awesome!_
+_Our Week 4 hackathon challenge was to build our first full stack app using Express and a Postgres database. It was a chance to embed everything we'd learnt so far on the bootcamp and great practice of breaking down problems into solvable chunks. I was so happy that I was able to make my first full-stack app with no help after just 4 weeks on the bootcamp - it felt awesome!_
 
 ### Hackathon Requirements
 
