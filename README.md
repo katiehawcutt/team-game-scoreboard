@@ -1,4 +1,4 @@
-# Team Score Tracker
+# Team Game Scoreboard
 
 ![Our SoC energiser score tracker](./public/images/socEnergizerScoreboard.PNG)
 
