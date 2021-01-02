@@ -1,6 +1,6 @@
 # Team Score Tracker
 
-![Our SoC energiser score tracker](./public/Images/socEnergizerScoreboard.PNG)
+![Our SoC energiser score tracker](./public/images/socEnergizerScoreboard.PNG)
 
 #### School of Code Bootcamp - Hackathon Week 4
 
@@ -29,40 +29,3 @@ _Our Week 4 hackathon challenge was to build our first full stack app using Expr
 ### Stretch Goals:
 
 - Add functionality to delete rows by ID
-
-# START PROJECT
-
-- ✔️Create folder and js file
-- ✔️npm init
-- ✔️npm i express
-- ✔️express generator npx
-- ✔️install postrgres
-- ✔️create database
-- ✔️index - pool file
-- ✔️.env file and gitignore
-- ✔️make scripts to create table, dropTable, viewTable, populateTable
-- ✔️run createTable and populate table
-- ✔️set up paths in app.js
-- ✔️set up routes - get and post request
-- create models folder and write functions in a file called scoreBoard
-- test routes / database using postman
-
-# BONUS
-
-- add delete and put requests
-- jest?
-
-# DATABASE TABLE
-
-✔️Table columns will be id, date, game, team1score, team2score, team3score, team4score
-
-# HTML/CSS page
-
-- Title of page - SoC Energizer Scoreboard!
-- Create a table with columns of Date, Game, Team 1, Team 2, Team 3, Team 4
-- At the bottom of the table there will be the running total of each teams score
-- Have an input section at the top of the page where you can add new data to the table
-- Save payload.rows to a variable called data.
-- Use an array method on data to get the information out (forEach)
-- Create td element
-- forEach item property assign it to the innerText of a td element.
