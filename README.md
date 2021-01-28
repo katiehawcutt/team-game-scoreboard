@@ -60,9 +60,13 @@ Download and install npm modules. Add .env file for local usage. You will need a
 3. Add a .env file in the root of the folder and enter your database credentials:
 
 `PGHOST= your host details here`
+
 `PGDATABASE= your db details here`
+
 `PGUSER= your user data`
+
 `PGPORT= your port number here`
+
 `PGPASSWORD= your password here`
 
 4. Start the application
